@@ -25,56 +25,20 @@
     <header>
 
         <div class="container">
-            <span class="title">Todo List</span>
+            <!-- INPUT -->
+            <div class="bar">
+                <div class="title">Todo List</div>
+                <div class="dark-mode"></div>
+            </div>
             <div class="input-container">
-                <input id="inputTxt" type="text">
-                <span id="inputDate" class="material-symbols-outlined">
-                    calendar_month
-                    <input type="date">
-                </span>
-                <span id="addTodo" class="material-symbols-outlined">
-                    add
-                </span>
+                <input class="input-txt" type="text">
+                <span class="input-date material-symbols-outlined">calendar_month</span>
+                <span class="add-todo material-symbols-outlined">add</span>
             </div>
-            <!--  -->
-            <div class="color-input">
-                <div id="green"></div>
-                <div id="blue"></div>
-                <div id="yellow"></div>
-                <div id="purple"></div>
-                <div id="red"></div>
+            <!-- COLOR PICKER -->
+            <div class="color-picker-container">
+                <span class="expand-color-picker material-symbols-outlined">expand_less</span>
             </div>
-            <!--  -->
-            <div class="option">
-                <span>Task</span>
-                <span>Pending</span>
-                <span>Completed</span>
-            </div>
-            <!--  -->
-            <!-- NEW LIST -->
-            <div class="new-list-container">
-
-                <div class="new-list-wrapper">
-                    <div class="new-list-txt-wrapper">
-                        <span id="newListTxt">Ngoding Santuy</span>
-                        <span id="newListDate">2023-01-14</span>
-                    </div>
-
-                    <div class="edit-or-remove">
-                        <span id="edit" class="material-symbols-outlined">
-                            edit
-                        </span>
-                        <span id="delete" class="material-symbols-outlined">
-                            delete
-                        </span>
-                    </div>
-                </div>
-
-            </div>
-            <div class="new-list-footer">
-                <span>Anda memiliki <span id="remainingTodoList">1</span> Todo List yang tersisa.</span>
-            </div>
-            <!--  -->
         </div>
 
     </header>
