@@ -28,16 +28,57 @@
             <!-- INPUT -->
             <div class="bar">
                 <div class="title">Todo List</div>
-                <div class="dark-mode"></div>
+                <div class="dark-mode" onclick='darkMode()'></div>
             </div>
             <div class="input-container">
                 <input class="input-txt" type="text">
-                <span class="input-date material-symbols-outlined">calendar_month</span>
+                <span class="input-date material-symbols-outlined">calendar_month<input type="date"></span>
                 <span class="add-todo material-symbols-outlined">add</span>
             </div>
             <!-- COLOR PICKER -->
             <div class="color-picker-container">
-                <span class="expand-color-picker material-symbols-outlined">expand_less</span>
+                <span onclick='expand()' class="expand-color-picker material-symbols-outlined">expand_less</span>
+                <div class="color-wrapper">
+                    <div class="green" style="background: lime;"></div>
+                    <div class="blue" style="background: #0BB5FF;"></div>
+                    <div class="yellow" style="background: #FFE600;"></div>
+                    <div class="purple" style="background: #5215FC;"></div>
+                    <div class="red" style="background: crimson;"></div>
+                </div>
+            </div>
+            <!-- OPTIONS -->
+            <div class="option-container">
+                <span>Task</span>
+                <span>Pending</span>
+                <span>Completed</span>
+            </div>
+            <!-- LIST -->
+            <div class="list-container">
+                    <div class="line-color"></div>
+                    <div class="text-list">
+                        <span id="txtList">Ngoding Cuy</span>
+                        <span id="dateList">2023-01-15</span>
+                    </div>
+                <div class="setting-list">
+                    <span class="edit material-symbols-outlined" style="background: #0BB5FF;">edit</span>
+                    <span class="delete material-symbols-outlined" style="background: crimson;">delete</span>
+                </div>
+            </div>
+
+            <div class="list-container">
+                <div class="line-color"></div>
+                <div class="text-list">
+                    <span id="txtList">Ngoding Cuy</span>
+                    <span id="dateList">2023-01-15</span>
+                </div>
+            <div class="setting-list">
+                <span class="edit material-symbols-outlined" style="background: #0BB5FF;">edit</span>
+                <span class="delete material-symbols-outlined" style="background: crimson;">delete</span>
+            </div>
+        </div>
+            <!-- FOOTER -->
+            <div class="footer">
+                <span>Anda memiliki 1 List yang tersisa</span>
             </div>
         </div>
 
