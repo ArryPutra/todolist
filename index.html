@@ -1,17 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Belajar</title>
+    <title>Todo List Online</title>
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <!-- ICON -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <!-- LINK -->
+    <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
+
 <body>
-    <input id="inputTxt" type="text">
-    <button id="addBtn">Add</button>
-    <ul id="list">
-        
-    </ul>
+
+    <header>
+
+        <div class="container">
+            <span class="title">Todo List</span>
+            <div class="input-container">
+                <input id="inputTxt" type="text">
+                <span id="inputDate" class="material-symbols-outlined">
+                    calendar_month
+                    <input type="date">
+                </span>
+                <span id="addTodo" class="material-symbols-outlined">
+                    add
+                </span>
+            </div>
+            <!--  -->
+            <div class="color-input">
+                <div id="green"></div>
+                <div id="blue"></div>
+                <div id="yellow"></div>
+                <div id="purple"></div>
+                <div id="red"></div>
+            </div>
+            <!--  -->
+            <div class="option">
+                <span>Task</span>
+                <span>Pending</span>
+                <span>Completed</span>
+            </div>
+            <!--  -->
+            <!-- NEW LIST -->
+            <div class="new-list-container">
+
+                <div class="new-list-wrapper">
+                    <div class="new-list-txt-wrapper">
+                        <span id="newListTxt">Ngoding Santuy</span>
+                        <span id="newListDate">2023-01-14</span>
+                    </div>
+
+                    <div class="edit-or-remove">
+                        <span id="edit" class="material-symbols-outlined">
+                            edit
+                        </span>
+                        <span id="delete" class="material-symbols-outlined">
+                            delete
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="new-list-footer">
+                <span>Anda memiliki <span id="remainingTodoList">1</span> Todo List yang tersisa.</span>
+            </div>
+            <!--  -->
+        </div>
+
+    </header>
+
 </body>
+
 </html>
