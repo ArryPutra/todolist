@@ -1,19 +1,17 @@
 let inputTxt = document.querySelector(".input-txt");
 let colorContainer = document.querySelector(".color-container");
-let topBar = document.querySelector(".bar");
-let darkMode = document.querySelector(".dark-mode");
-let expandColorPicker = document.querySelector(".expand-color-picker");
 
-
-darkMode.onclick = function () {
-    darkMode.classList.toggle("darkModeActive");
+function darkMode() {
+    document.querySelector('.dark-mode').classList.toggle("darkModeActive");
+    document.body.classList.toggle('darkModeAll');
 }
 
-expandColorPicker.onclick = function () {
-    expandColorPicker.classList.toggle("rotateExpandColorPicker");
+function expand() {
+    document.querySelector('.expand-color-picker').classList.toggle('rotateExpandColorPicker');
+    document.querySelector('.color-wrapper').classList.toggle('colorWrapperMove');
 }
-
 // MENGIKUTI LEBAR inputText
+let topBar = document.querySelector(".bar");
 topBar.style.width = inputTxt.clientWidth + "px";
 window.addEventListener("resize", function () {
     topBar.style.width = inputTxt.clientWidth + "px";
