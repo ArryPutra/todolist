@@ -39,17 +39,6 @@
                 <span class="input-date material-symbols-outlined">calendar_month<input type="date"></span>
                 <span onclick="addTodo()" class="add-todo material-symbols-outlined">add</span>
             </div>
-            <!-- COLOR PICKER -->
-            <div class="color-picker-container">
-                <span onclick='expand()' class="expand-color-picker material-symbols-outlined">expand_less</span>
-                <div class="color-wrapper">
-                    <div onclick="colors('green-list')" class="green color" style="background: #00ff00;"></div>
-                    <div onclick="colors('blue-list')" class="blue color" style="background: #0BB5FF;"></div>
-                    <div onclick="colors('yellow-list')" class="yellow color" style="background: #FFE600;"></div>
-                    <div onclick="colors('purple-list')" class="purple color" style="background: #5215FC;"></div>
-                    <div onclick="colors('red-list')" class="red color" style="background: #dc143c;"></div>
-                </div>
-            </div>
             <!-- OPTIONS -->
             <div class="option-container">
                 <span id="task">Task</span>
@@ -60,14 +49,14 @@
             <div class="list-container">
 
                 <!-- <div class='list-wrapper'>
-                    <div class='line-color blue-list'></div>
+                    <div class='line-color'></div>
                     <div class='text-list'>
-                        <textarea id='txtList' spellcheck='false'>Belajar Ngoding</textarea>
-                        <span id='dateList'>2023-01-16</span>
+                        <textarea id='txtList' spellcheck='false'>"+inputTxt.value+"</textarea>
+                        <spanid='dateList'>"+inputDate.value+"</span>
                     </div>
                     <div class='setting-list'>
-                        <span onclick='doneList()' class='done material-symbols-outlined'>done</span>
-                        <span onclick='deleteList()' class='delete material-symbols-outlined' style='background: crimson;'>delete</span>
+                        <span onclick='doneList(this)' class='done material-symbols-outlined'>done</span>
+                        <span onclick='deleteList(this)' class='delete material-symbols-outlined' style='background: crimson;'>delete</span>
                     </div>
                 </div> -->
 
