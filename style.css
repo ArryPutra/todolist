@@ -229,12 +229,11 @@ textarea::-webkit-scrollbar {
 /* REMOVE LIST */
 /* FOOTER */
 .footer {
-    margin: 20px 0px;
+    margin-top: 20px;
     background: #0BB5FF;
-    padding: 10px;
+    padding: 12px 0px;
     text-align: center;
     color: white;
-    border-radius: 8px;
     width: 100%;
     transition: 0.3s;
 }
