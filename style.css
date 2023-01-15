@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap');
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48;
+}
+/* DARK MODE */
+.darkModeAll header {
+    background: #0D0C12;
+}
+body {
+    margin: 0;
+}
+/*  */
+header {
+    display: flex;
+    justify-content: center;
+    background: #F8F8FF;
+    width: 100%;
+    height: 100vh;
+}
+.container {
+    margin-top: 20px;
+    font-family: "Poppins";
+    width: 85%;
+    max-width: 360px;
+    user-select: none;
+    overflow: hidden;
+}
+/* TOP BAR */
+.bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.title {
+    font-size: 20px;
+}
+.dark-mode {
+    width: 12px;
+    height: 12px;
+    padding: 14px;
+    border-radius: 99px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    transition: 0.2s background;
+    overflow: hidden;
+}
+.dark-mode:hover {
+    background: #FFE600;
+}
+.dark-mode span {
+    position: relative;
+    top: 200%;
+    transition: 0.5s;
+}
+.darkModeAll span {
+    top: -200%;
+}
+/* INPUT */
+.input-container {
+    gap: 10px;
+    display: flex;
+    margin-top: 10px;
+}
+.input-txt {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    caret-color: #0BB5FF;
+    font-family: "Poppins";
+    font-size: 16px;
+    position: relative;
+}
+.input-date {
+    background: white;
+    padding: 12px;
+    border-radius: 99px;
+    color: #0BB5FF;
+    position: relative;
+    transition: 0.3s;
+}
+.input-date input {
+    position: absolute;
+    transform: scale(2);
+    opacity: 0;
+    left: 35%;
+    width: 10px;
+}
+.add-todo {
+    background: white;
+    padding: 12px;
+    display: flex;
+    border-radius: 99px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.add-todo:hover {
+    background: lime;
+}
+/* OPTION */
+.option-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 15px 0px;
+}
+.option-container span {
+    cursor: pointer;
+    transition: 0.2s;
+}
+#task:hover {
+    color: #0BB5FF;
+}
+#pending:hover {
+    color: #5215FC;
+}
+#completed:hover {
+    color: lime;
+}
+/* LIST */
+/* TASK */
+.task-container {
+    overflow-y: scroll;
+    max-height: 60vh;
+}
+.list-wrapper {
+    background: white;
+    padding: 10px 0px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: 0.3s;
+    position: relative;
+    margin-bottom: 10px;
+}
+.line-color {
+    background: #0BB5FF;
+    width: 8px;
+    height: 100%;
+    position: absolute;
+}
+.green-list {
+    background: lime;
+} 
+.blue-list {
+    background: #0BB5FF;
+}
+.yellow-list {
+    background: #FFE600;
+}
+.purple-list {
+    background: #5215FC;
+}
+.red-list {
+    background: crimson;
+}
+.text-list {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    justify-content: center;
+    width: 100%;
+}
+#txtList {
+    font-size: 18px;
+    font-family: "Poppins";
+    resize: none;
+    outline: none;
+    width: 97%;
+    height: 30px;
+    border: none;
+}
+textarea::-webkit-scrollbar {
+    display: none;
+}
+.setting-list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 15px;
+    gap: 10px;
+}
+.setting-list span {
+    padding: 8px;
+    border-radius: 99px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#dateList {
+    font-size: 14px;
+    color: hsla(250, 20%, 6%, 0.71);
+}
+.done {
+    background: #0BB5FF;
+}
+.done:active {
+    transform: scale(0.9);
+}
+.delete:active {
+    transform: scale(0.9);
+}
+/* DONE LIST SCRIPT */
+.doneList {
+    filter: brightness(90%);
+}
+.doneList .text-list {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+.doneList .done {
+    background: lime;
+}
+/* REMOVE LIST */
+/* FOOTER */
+.footer {
+    margin: 20px 0px;
+    background: #0BB5FF;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    border-radius: 8px;
+    width: 100%;
+    transition: 0.3s;
+}
+/* COPYRIGHT */
+.copyright {
+    position: absolute;
+    bottom: 10px;
+    font-family: "Poppins";
+    cursor: pointer;
+}
