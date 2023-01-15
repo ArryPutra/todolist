@@ -41,30 +41,33 @@
             </div>
             <!-- OPTIONS -->
             <div class="option-container">
-                <span id="task">Task</span>
-                <span id="pending">Pending</span>
-                <span id="completed">Completed</span>
+                <span onclick="taskMenu(this)" id="task" style="color: #0BB5FF;">Task</span>
+                <span onclick="pendingMenu(this)" id="pending">Pending</span>
+                <span onclick="completedMenu(this)" id="completed">Completed</span>
             </div>
             <!-- LIST -->
             <div class="list-container">
+                
+                <div class="task-container">
 
-                <!-- <div class='list-wrapper'>
-                    <div class='line-color'></div>
-                    <div class='text-list'>
-                        <textarea id='txtList' spellcheck='false'>"+inputTxt.value+"</textarea>
-                        <spanid='dateList'>"+inputDate.value+"</span>
-                    </div>
-                    <div class='setting-list'>
-                        <span onclick='doneList(this)' class='done material-symbols-outlined'>done</span>
-                        <span onclick='deleteList(this)' class='delete material-symbols-outlined' style='background: crimson;'>delete</span>
-                    </div>
-                </div> -->
-
+                    <!-- <div class='list-wrapper'>
+                        <div class='line-color'></div>
+                        <div class='text-list'>
+                            <textarea id='txtList' spellcheck='false'>"+inputTxt.value+"</textarea>
+                            <spanid='dateList'>"+inputDate.value+"</span>
+                        </div>
+                        <div class='setting-list'>
+                            <span onclick='doneList(this)' class='done material-symbols-outlined'>done</span>
+                            <span onclick='deleteList(this)' class='delete material-symbols-outlined' style='background: crimson;'>delete</span>
+                        </div>
+                    </div> -->
+    
+                </div>
+                <div class="footer">
+                    <span id="eachList">Anda belum membuat Todo List</span>
+                </div>
             </div>
             <!-- FOOTER -->
-            <div class="footer">
-                <span>Anda memiliki <span id="eachList">0</span> Todo List</span>
-            </div>
         </div>
 
         <!-- <span class="copyright">Made by ArryPutra</span> -->
