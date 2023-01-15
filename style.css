@@ -89,6 +89,7 @@ header {
     border-radius: 99px;
     color: #0BB5FF;
     position: relative;
+    transition: 0.3s;
 }
 .input-date input {
     position: absolute;
@@ -131,6 +132,10 @@ header {
     color: lime;
 }
 /* LIST */
+.list-container {
+    height: 60vh;
+    position: relative;
+}
 .list-wrapper {
     margin-top: 15px;
     background: white;
@@ -170,9 +175,9 @@ header {
     flex-direction: column;
     margin-left: 20px;
     justify-content: center;
-    width: 50%;
+    width: 60%;
 }
-.txt-list-container {
+.txt-task-container {
     width: auto;
 }
 #txtList {
@@ -236,7 +241,7 @@ textarea::-webkit-scrollbar {
     text-align: center;
     color: white;
     border-radius: 8px;
-    position: relative;
+    width: 100%;
     transition: 0.3s;
 }
 /* COPYRIGHT */
