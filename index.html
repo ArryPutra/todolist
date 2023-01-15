@@ -28,59 +28,57 @@
             <!-- INPUT -->
             <div class="bar">
                 <div class="title">Todo List</div>
-                <div class="dark-mode" onclick='darkMode()'></div>
+                <div class="dark-mode" onclick='darkMode()'>
+                    <span class="material-symbols-outlined">light_mode</span>
+                    <br>
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </div>
             </div>
             <div class="input-container">
-                <input class="input-txt" type="text">
+                <input class="input-txt" type="text" placeholder="Type something ...">
                 <span class="input-date material-symbols-outlined">calendar_month<input type="date"></span>
-                <span class="add-todo material-symbols-outlined">add</span>
+                <span onclick="addTodo()" class="add-todo material-symbols-outlined">add</span>
             </div>
             <!-- COLOR PICKER -->
             <div class="color-picker-container">
                 <span onclick='expand()' class="expand-color-picker material-symbols-outlined">expand_less</span>
                 <div class="color-wrapper">
-                    <div class="green" style="background: lime;"></div>
-                    <div class="blue" style="background: #0BB5FF;"></div>
-                    <div class="yellow" style="background: #FFE600;"></div>
-                    <div class="purple" style="background: #5215FC;"></div>
-                    <div class="red" style="background: crimson;"></div>
+                    <div onclick="colors('green-list')" class="green color" style="background: #00ff00;"></div>
+                    <div onclick="colors('blue-list')" class="blue color" style="background: #0BB5FF;"></div>
+                    <div onclick="colors('yellow-list')" class="yellow color" style="background: #FFE600;"></div>
+                    <div onclick="colors('purple-list')" class="purple color" style="background: #5215FC;"></div>
+                    <div onclick="colors('red-list')" class="red color" style="background: #dc143c;"></div>
                 </div>
             </div>
             <!-- OPTIONS -->
             <div class="option-container">
-                <span>Task</span>
-                <span>Pending</span>
-                <span>Completed</span>
+                <span id="task">Task</span>
+                <span id="pending">Pending</span>
+                <span id="completed">Completed</span>
             </div>
             <!-- LIST -->
             <div class="list-container">
-                    <div class="line-color"></div>
-                    <div class="text-list">
-                        <span id="txtList">Ngoding Cuy</span>
-                        <span id="dateList">2023-01-15</span>
-                    </div>
-                <div class="setting-list">
-                    <span class="edit material-symbols-outlined" style="background: #0BB5FF;">edit</span>
-                    <span class="delete material-symbols-outlined" style="background: crimson;">delete</span>
-                </div>
-            </div>
 
-            <div class="list-container">
-                <div class="line-color"></div>
-                <div class="text-list">
-                    <span id="txtList">Ngoding Cuy</span>
-                    <span id="dateList">2023-01-15</span>
-                </div>
-            <div class="setting-list">
-                <span class="edit material-symbols-outlined" style="background: #0BB5FF;">edit</span>
-                <span class="delete material-symbols-outlined" style="background: crimson;">delete</span>
+                <!-- <div class='list-wrapper'>
+                    <div class='line-color blue-list'></div>
+                    <div class='text-list'>
+                        <textarea id='txtList' spellcheck='false'>Belajar Ngoding</textarea>
+                        <span id='dateList'>2023-01-16</span>
+                    </div>
+                    <div class='setting-list'>
+                        <span onclick='doneList()' class='done material-symbols-outlined'>done</span>
+                        <span onclick='deleteList()' class='delete material-symbols-outlined' style='background: crimson;'>delete</span>
+                    </div>
+                </div> -->
+
             </div>
-        </div>
             <!-- FOOTER -->
             <div class="footer">
-                <span>Anda memiliki 1 List yang tersisa</span>
+                <span>Anda memiliki <span id="eachList">0</span> Todo List</span>
             </div>
         </div>
+
+        <!-- <span class="copyright">Made by ArryPutra</span> -->
 
     </header>
 
