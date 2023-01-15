@@ -10,7 +10,7 @@ function addTodo() {
 
     }
     else {
-        listContainer.insertAdjacentHTML("afterbegin",
+        listContainer.insertAdjacentHTML("beforeend",
         "<div class='list-wrapper'><div class='line-color'></div><div class='text-list'><textarea id='txtList' spellcheck='false'>"+inputTxt.value+"</textarea><span id='dateList'>"+inputDate.value+"</span></div><div class='setting-list'><span onclick='doneList(this)' class='done material-symbols-outlined'>done</span><span onclick='deleteList(this)' class='delete material-symbols-outlined' style='background: crimson;'>delete</span></div></div>");
         inputTxt.value = "";
     }
@@ -22,11 +22,11 @@ function addTodo() {
     txtList.addEventListener("input", function() {
         this.style.height = "30px";
         this.style.height = this.scrollHeight - 4 + "px";
-      });
+    });
 }
 
-
 function doneList(el) {
+    let txtList = document.getElementById("txtList");
     el.parentElement.parentElement.classList.toggle('doneList');
 };  
 function deleteList(el) {
@@ -40,7 +40,3 @@ function darkMode() {
     document.body.classList.toggle('darkModeAll');
 }
 
-function expand() {
-    document.querySelector('.expand-color-picker').classList.toggle('rotateExpandColorPicker');
-    document.querySelector('.color-wrapper').classList.toggle('colorWrapperMove');
-}
