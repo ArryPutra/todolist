@@ -9,7 +9,7 @@
 }
 /* DARK MODE */
 .darkModeAll header {
-    background: #242526;
+    background: #0D0C12;
 }
 body {
     margin: 0;
@@ -40,36 +40,31 @@ header {
     font-size: 20px;
 }
 .dark-mode {
-    width: 40px;
+    width: 12px;
     height: 12px;
-    padding: 5px;
+    padding: 14px;
     border-radius: 99px;
     background: white;
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
     cursor: pointer;
     transition: 0.3s ease-in-out;
+    transition: 0.2s background;
+    overflow: hidden;
 }
-.darkModeActive {
-    background: #242526;
+.dark-mode:hover {
+    background: #FFE600;
 }
-.dark-mode::before {
-    content: "";
-    width: 16px;
-    height: 16px;
-    background: #242526;
-    display: block;
-    border-radius: 99px;
-    transition: 0.3s ease-in-out;
+.dark-mode span {
+    position: relative;
+    top: 200%;
+    transition: 0.5s;
 }
-.darkModeActive::before {
-    content: "";
-    margin-left: 24px;
-    width: 16px;
-    height: 16px;
-    background: #eeeefe;
-    display: block;
-    border-radius: 99px;
+.darkModeAll span {
+    top: -200%;
 }
 /* INPUT */
 .input-container {
@@ -92,10 +87,14 @@ header {
     padding: 12px;
     border-radius: 99px;
     color: #0BB5FF;
+    position: relative;
 }
 .input-date input {
     position: absolute;
+    transform: scale(2);
     opacity: 0;
+    left: 35%;
+    width: 10px;
 }
 .add-todo {
     background: white;
@@ -164,9 +163,19 @@ header {
 }
 .option-container span {
     cursor: pointer;
+    transition: 0.2s;
+}
+#task:hover {
+    color: #0BB5FF;
+}
+#pending:hover {
+    color: #5215FC;
+}
+#completed:hover {
+    color: lime;
 }
 /* LIST */
-.list-container {
+.list-wrapper {
     margin-top: 15px;
     background: white;
     width: 100%;
@@ -176,6 +185,8 @@ header {
     align-items: center;
     justify-content: space-between;
     position: relative;
+    transition: 0.3s;
+    right: 0%;
 }
 .line-color {
     background: #0BB5FF;
@@ -184,35 +195,81 @@ header {
     top: 0;
     position: absolute;
 }
+.green-list {
+    background: lime;
+} 
+.blue-list {
+    background: #0BB5FF;
+}
+.yellow-list {
+    background: #FFE600;
+}
+.purple-list {
+    background: #5215FC;
+}
+.red-list {
+    background: crimson;
+}
 .text-list {
     display: flex;
     flex-direction: column;
     margin-left: 20px;
+    justify-content: center;
+}
+.txt-list-container {
+    width: auto;
+    background: chartreuse;
+}
+#txtList {
+    font-size: 18px;
+    font-family: "Poppins";
+    resize: none;
+    outline: none;
+    width: 90%;
+    height: 30px;
+    border: none;
+}
+textarea::-webkit-scrollbar {
+    display: none;
 }
 #dateList {
     font-size: 14px;
-    opacity: 0.7;
+    color: hsla(250, 20%, 6%, 0.71);
 }
 .setting-list {
     right: 0;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    flex-wrap: wrap;
     margin-right: 15px;
     gap: 10px;
+    flex-wrap: wrap;
 }
 .setting-list span {
-    border-radius: 99px;
     padding: 8px;
+    border-radius: 99px;
     color: white;
     cursor: pointer;
     transition: 0.3s;
 }
-.setting-list span:hover {
-    transform: scale(0.9);
+.done {
+    background: #0BB5FF;
 }
+.done:active {
+    transform: scale(0.95);
+}
+/* DONE LIST SCRIPT */
+.doneList {
+    filter: brightness(70%);
+}
+.doneList .text-list {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+.doneList .done {
+    background: lime;
+}
+
 /* FOOTER */
 .footer {
     margin: 20px 0px;
@@ -221,4 +278,13 @@ header {
     text-align: center;
     color: white;
     border-radius: 8px;
+    position: relative;
+    transition: 0.3s;
+}
+/* COPYRIGHT */
+.copyright {
+    position: absolute;
+    bottom: 10px;
+    font-family: "Poppins";
+    cursor: pointer;
 }
