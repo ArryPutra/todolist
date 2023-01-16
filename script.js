@@ -17,8 +17,23 @@ let arrayListParse = JSON.parse(localStorage.getItem('saveList'));
 arrayListParse.forEach(e => {
     taskContainer.insertAdjacentHTML("beforeend",
         "<div class='list-wrapper'><div class='line-color'></div><div class='text-list'><textarea id='txtList' spellcheck='false'>" + e.txtList + "</textarea><span id='dateList'>" + e.date + "</span></div><div class='setting-list'><span onclick='doneList(this)' class='done material-symbols-outlined'>done</span><span onclick='deleteList(this)' class='delete material-symbols-outlined' style='background: crimson;'>delete</span></div></div>");
-
+    // 
 });
+
+for (let i = 0; i <= arrayList.length - 1; i++) {
+    let dateList = new Date(arrayList[i].datePicker).getDate();
+    let dateNow = new Date().getDate();
+    if (dateList == dateNow) {
+        arrayList[i].date = "Hari ini";
+    } else if (dateList == (dateNow + 1)) {
+        arrayList[i].date = "Besok";
+    } else if (dateList == (dateNow - 1)) {
+        arrayList[i].date = "Kemarin";
+    } else {
+        arrayList[i].date = arrayList[i].datePicker;
+    }
+    localStorage.setItem('saveList', JSON.stringify(arrayList));
+}
 
 let listWrapperArray = Array.from(document.querySelectorAll('.list-wrapper'));
 let activeUsers = arrayList.filter(user => user.doneList === true);
@@ -41,7 +56,7 @@ window.addEventListener('load', function () {
 
             window.addEventListener('beforeunload', function () {
                 let clickArrayPostion = arrayList[clickArrayList];
-                if(clickArrayPostion.txtList.trim() == "") {
+                if (clickArrayPostion.txtList.trim() == "") {
                     arrayList.splice(clickArrayList, 1);
                     localStorage.setItem('saveList', JSON.stringify(arrayList));
                 }
@@ -55,17 +70,35 @@ window.addEventListener('load', function () {
 
 // ADD TODO LIST
 function addTodo(el) {
+
     if (inputTxt.value.trim() == "") {
         eachList.textContent = "Todo Listnya di isi dulu bre";
     }
     else {
-        taskContainer.insertAdjacentHTML("beforeend",
-            "<div class='list-wrapper'><div class='line-color'></div><div class='text-list'><textarea id='txtList' spellcheck='false'>" + inputTxt.value + "</textarea><span id='dateList'>" + inputDate.value + "</span></div><div class='setting-list'><span onclick='doneList(this)' class='done material-symbols-outlined'>done</span><span onclick='deleteList(this)' class='delete material-symbols-outlined' style='background: crimson;'>delete</span></div></div>");
-
         // SAVE TO LOCAL STORAGE
+
         arrayList.push(
-            { 'txtList': inputTxt.value, 'date': inputDate.value, 'doneList': false }
+            { 'txtList': inputTxt.value, 'date': '', 'datePicker': inputDate.value, 'doneList': false }
         );
+
+        for (let i = 0; i <= arrayList.length - 1; i++) {
+            let dateList = new Date(arrayList[i].datePicker).getDate();
+            let dateNow = new Date().getDate();
+            if (dateList == dateNow) {
+                arrayList[i].date = "Hari ini";
+            } else if (dateList == (dateNow + 1)) {
+                arrayList[i].date = "Besok";
+            } else if (dateList == (dateNow - 1)) {
+                arrayList[i].date = "Kemarin";
+            } else {
+                arrayList[i].date = arrayList[i].datePicker;
+            }
+            localStorage.setItem('saveList', JSON.stringify(arrayList));
+        }
+
+        let x = arrayList.length - 1;
+        taskContainer.insertAdjacentHTML("beforeend",
+            "<div class='list-wrapper'><div class='line-color'></div><div class='text-list'><textarea id='txtList' spellcheck='false'>" + inputTxt.value + "</textarea><span id='dateList'>" + arrayList[x].date + "</span></div><div class='setting-list'><span onclick='doneList(this)' class='done material-symbols-outlined'>done</span><span onclick='deleteList(this)' class='delete material-symbols-outlined' style='background: crimson;'>delete</span></div></div>");
         localStorage.setItem('saveList', JSON.stringify(arrayList));
         inputTxt.value = '';
         //
@@ -84,7 +117,7 @@ function addTodo(el) {
 
                 window.addEventListener('beforeunload', function () {
                     let clickArrayPostion = arrayList[clickArrayList];
-                    if(clickArrayPostion.txtList.trim() == "") {
+                    if (clickArrayPostion.txtList.trim() == "") {
                         arrayList.splice(clickArrayList, 1);
                         localStorage.setItem('saveList', JSON.stringify(arrayList));
                     }
