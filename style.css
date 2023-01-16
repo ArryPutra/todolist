@@ -152,7 +152,7 @@ header {
 .text-list {
     display: flex;
     flex-direction: column;
-    margin-left: 20px;
+    margin-left: 15px;
     justify-content: center;
     width: 100%;
 }
