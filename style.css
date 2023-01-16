@@ -113,7 +113,7 @@ header {
 .option-container {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
     margin: 15px 0px;
@@ -147,27 +147,7 @@ header {
     transition: 0.3s;
     position: relative;
     margin-bottom: 10px;
-}
-.line-color {
-    background: #0BB5FF;
-    width: 8px;
-    height: 100%;
-    position: absolute;
-}
-.green-list {
-    background: lime;
-} 
-.blue-list {
-    background: #0BB5FF;
-}
-.yellow-list {
-    background: #FFE600;
-}
-.purple-list {
-    background: #5215FC;
-}
-.red-list {
-    background: crimson;
+    overflow: hidden;
 }
 .text-list {
     display: flex;
@@ -181,9 +161,10 @@ header {
     font-family: "Poppins";
     resize: none;
     outline: none;
-    width: 97%;
     height: 30px;
     border: none;
+    background: none;
+    width: 95%;
 }
 textarea::-webkit-scrollbar {
     display: none;
@@ -192,8 +173,9 @@ textarea::-webkit-scrollbar {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-right: 15px;
     gap: 10px;
+    margin-right: 15px;
+    transition: 0.3s;
 }
 .setting-list span {
     padding: 8px;
@@ -211,9 +193,11 @@ textarea::-webkit-scrollbar {
 }
 .done:active {
     transform: scale(0.9);
+    opacity: 0.8;
 }
 .delete:active {
     transform: scale(0.9);
+    opacity: 0.8;
 }
 /* DONE LIST SCRIPT */
 .doneList {
