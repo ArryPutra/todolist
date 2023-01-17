@@ -9,7 +9,30 @@
 }
 /* DARK MODE */
 .darkModeAll header {
-    background: #0D0C12;
+    background: #161420;
+}
+.darkModeAll .add-todo {
+    color: #161420;
+}
+.darkModeAll .input-txt,
+.darkModeAll .add-todo,
+.darkModeAll .dark-mode,
+.darkModeAll .list-wrapper,
+.darkModeAll .footer {
+    background: #211e2f;
+}
+.darkModeAll .dark-mode,
+.darkModeAll .input-txt,
+.darkModeAll .title,
+.darkModeAll #completed,
+.darkModeAll .add-todo,
+.darkModeAll #txtList,
+.darkModeAll #dateList {
+    color: #F8F8FF;
+}
+.darkModeAll .dark-mode:hover,
+.darkModeAll .add-todo:hover {
+    color: #161420;
 }
 body {
     margin: 0;
