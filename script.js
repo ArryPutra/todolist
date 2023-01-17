@@ -38,12 +38,6 @@ completedMenu.onclick = function () {
     for(let i = 1; i <= arrayListCompleted.length; i++) {
         eachList.textContent = "Anda telah menyelesaikan "+ i +" Todo List";
     }
-    let addTodo = document.querySelector('.add-todo');
-    // addTodo.onclick = function () {
-    //     if(inputTxt.value.trim() !== "") {
-    //         location.reload();
-    //     }
-    // }
 }
 
 // ARRAY LIST LOCAL STORAGE
@@ -111,6 +105,7 @@ function doneListCompleted(el) {
             localStorage.setItem('saveListCompleted', JSON.stringify(arrayListCompleted));
         });
     }
+
 }
 
 function deleteListCompleted(el) {
@@ -155,7 +150,6 @@ activeUsers.forEach((user, i) => user.index = arrayList.findIndex(u => u === use
 activeUsers.forEach(e => {
     listWrapperArray[e.index].classList.add('doneList');
 });
-
 // INPUT TEXT
 window.addEventListener('load', function () {
     // 
@@ -181,6 +175,8 @@ window.addEventListener('load', function () {
             this.style.height = `${this.scrollHeight - 4}px`;
         })
     });
+    let listWrapper = document.querySelectorAll('.task-container .list-wrapper').length;
+eachList.textContent = "Anda mempunyai " +listWrapper+ " Todo List";
 });
 // ADD TODO LIST
 function addTodo(el) {
@@ -190,11 +186,9 @@ function addTodo(el) {
     }
     else {
         // SAVE TO LOCAL STORAGE
-
         arrayList.push(
             { 'txtList': inputTxt.value, 'date': '', 'datePicker': inputDate.value, 'doneList': false }
         );
-
         for (let i = 0; i <= arrayList.length - 1; i++) {
             let dateList = new Date(arrayList[i].datePicker).getDate();
             let dateNow = new Date().getDate();
@@ -215,7 +209,6 @@ function addTodo(el) {
             "<div class='list-wrapper'><div class='line-color'></div><div class='text-list'><textarea id='txtList' spellcheck='false'>" + inputTxt.value + "</textarea><span id='dateList'>" + arrayList[x].date + "</span></div><div class='setting-list'><span onclick='doneList(this)' class='done material-symbols-outlined'>done</span><span onclick='deleteList(this)' class='delete material-symbols-outlined' style='background: crimson;'>delete</span></div></div>");
         localStorage.setItem('saveList', JSON.stringify(arrayList));
         inputTxt.value = '';
-        //
 
         let txtList = document.querySelectorAll('#txtList');
         txtList.forEach(txtList => {
@@ -241,6 +234,11 @@ function addTodo(el) {
     }
     for(let i = 1; i <= arrayList.length; i++) {
         eachList.textContent = "Anda mempunyai "+ i +" Todo List";
+    }
+    if(completedContainer.style.display == 'block') {
+        setTimeout(function() {
+            location.reload();
+        }, 50)
     }
 }
 
@@ -293,4 +291,14 @@ function deleteList(el) {
 // DARK MODE
 function darkMode() {
     document.body.classList.toggle('darkModeAll');
+    if(document.body.classList.contains('darkModeAll') == true) {
+        localStorage.setItem('darkModeAll', 'darkModeAll');
+    } else {
+        localStorage.removeItem('darkModeAll');
+    }
+}
+if(localStorage.getItem('darkModeAll') == 'darkModeAll') {
+    document.body.classList.add('darkModeAll')
+} else {
+    document.body.classList.remove('darkModeAll');
 }
