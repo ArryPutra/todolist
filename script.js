@@ -2,8 +2,49 @@ let inputTxt = document.querySelector(".input-txt");
 let inputDate = document.querySelector('.input-date input');
 // CONTAINER
 let taskContainer = document.querySelector('.task-container');
+let completedContainer = document.getElementById('completedContainer');
 let footer = document.querySelector('.footer');
 let eachList = document.getElementById('eachList');
+
+// 
+let completedMenu = document.getElementById('completed');
+let taskMenu = document.getElementById('task');
+taskMenu.onclick = function () {
+    completedMenu.style.color = 'black';
+    taskMenu.style.color = '#0BB5FF';
+    completedContainer.style.display = 'none';
+    taskContainer.style.display = 'block';
+
+    let txtList = document.querySelectorAll('#txtList');
+    txtList.forEach(txtList => {
+        txtList.style.cssText = `height: ${txtList.scrollHeight}px; overflow-y: hidden`;
+    });
+
+    for(let i = 1; i <= arrayList.length; i++) {
+        eachList.textContent = "Anda mempunyai "+ i +" Todo List";
+    }
+}
+completedMenu.onclick = function () {
+    completedMenu.style.color = 'lime';
+    taskMenu.style.color = 'black';
+    taskContainer.style.display = 'none';
+    completedContainer.style.display = 'block';
+
+    let txtList = document.querySelectorAll('#txtList');
+    txtList.forEach(txtList => {
+        txtList.style.cssText = `height: ${txtList.scrollHeight}px; overflow-y: hidden`;
+    });
+
+    for(let i = 1; i <= arrayListCompleted.length; i++) {
+        eachList.textContent = "Anda telah menyelesaikan "+ i +" Todo List";
+    }
+    let addTodo = document.querySelector('.add-todo');
+    // addTodo.onclick = function () {
+    //     if(inputTxt.value.trim() !== "") {
+    //         location.reload();
+    //     }
+    // }
+}
 
 // ARRAY LIST LOCAL STORAGE
 let arrayList;
@@ -13,11 +54,84 @@ if (localStorage.getItem('saveList') == null) {
     arrayList = JSON.parse(localStorage.getItem('saveList'));
 }
 
+let arrayListCompleted;
+if (localStorage.getItem('saveListCompleted') == null) {
+    localStorage.setItem('saveListCompleted', "[]");
+} else {
+    arrayListCompleted = JSON.parse(localStorage.getItem('saveListCompleted'));
+}
+for(let i = 1; i <= arrayList.length; i++) {
+    eachList.textContent = "Anda mempunyai "+ i +" Todo List";
+}
+// MOVE TO COMPLETED TASK
+arrayList.forEach(e => {
+    if (e.doneList == true) {
+        arrayListCompleted.push(e);
+    }
+    localStorage.setItem('saveListCompleted', JSON.stringify(arrayListCompleted));
+})
+for (let i = 0; i < arrayList.length; i++) {
+    if (arrayList[i].doneList === true) {
+        arrayList.splice(i, 1);
+        i--;
+    }
+    localStorage.setItem('saveList', JSON.stringify(arrayList));
+}
+// LIST COMPLETED
+arrayListCompleted.forEach(e => {
+    completedContainer.insertAdjacentHTML("beforeend",
+        "<div class='list-wrapper'><div class='line-color'></div><div class='text-list'><textarea id='txtList' spellcheck='false'>" + e.txtList + "</textarea><span id='dateList'>" + e.date + "</span></div><div class='setting-list'><span onclick='doneListCompleted(this)' class='done material-symbols-outlined'>done</span><span onclick='deleteListCompleted(this)' class='delete material-symbols-outlined' style='background: crimson;'>delete</span></div></div>");
+
+});
+let listWrapperCompleted = document.querySelectorAll('.list-wrapper');
+for (let i = 0; i <= arrayListCompleted.length - 1; i++) {
+    if (arrayListCompleted[i].doneList == true) {
+        listWrapperCompleted[i].classList.add('doneList');
+    }
+}
+function doneListCompleted(el) {
+    let doneListCompletedParent = el.parentElement.parentElement;
+    doneListCompletedParent.classList.toggle('doneList');
+
+    let clickArrayDoneCompletedList = Array.from(listWrapperCompleted).indexOf(doneListCompletedParent);
+
+    if (listWrapperCompleted[clickArrayDoneCompletedList].classList.contains('doneList')) {
+        arrayListCompleted[clickArrayDoneCompletedList].doneList = true;
+    } else {
+        arrayListCompleted[clickArrayDoneCompletedList].doneList = false;
+    }
+    localStorage.setItem('saveListCompleted', JSON.stringify(arrayListCompleted));
+
+
+    if (arrayListCompleted[clickArrayDoneCompletedList].doneList == false) {
+        window.addEventListener('beforeunload', () => {
+            arrayList.push(arrayListCompleted[clickArrayDoneCompletedList])
+            arrayListCompleted.splice(clickArrayDoneCompletedList, 1);
+            localStorage.setItem('saveList', JSON.stringify(arrayList));
+            localStorage.setItem('saveListCompleted', JSON.stringify(arrayListCompleted));
+        });
+    }
+}
+
+function deleteListCompleted(el) {
+    let deleteListCompletedParent = el.parentElement.parentElement;
+    
+    let allOfListWrapper = document.querySelectorAll('#completedContainer .list-wrapper');
+    let indexOfDeleteListParent = Array.from(allOfListWrapper).indexOf(deleteListCompletedParent);
+    deleteListCompletedParent.remove();
+    arrayListCompleted.splice(indexOfDeleteListParent, 1);
+    console.log(indexOfDeleteListParent);
+    localStorage.setItem('saveListCompleted', JSON.stringify(arrayListCompleted));
+    for(let i = 0; i <= arrayListCompleted.length; i++) {
+        eachList.textContent = "Anda telah menyelesaikan " +i+ " Todo List";
+    }
+}
+// 
 let arrayListParse = JSON.parse(localStorage.getItem('saveList'));
 arrayListParse.forEach(e => {
     taskContainer.insertAdjacentHTML("beforeend",
         "<div class='list-wrapper'><div class='line-color'></div><div class='text-list'><textarea id='txtList' spellcheck='false'>" + e.txtList + "</textarea><span id='dateList'>" + e.date + "</span></div><div class='setting-list'><span onclick='doneList(this)' class='done material-symbols-outlined'>done</span><span onclick='deleteList(this)' class='delete material-symbols-outlined' style='background: crimson;'>delete</span></div></div>");
-    // 
+    //
 });
 
 for (let i = 0; i <= arrayList.length - 1; i++) {
@@ -44,6 +158,7 @@ activeUsers.forEach(e => {
 
 // INPUT TEXT
 window.addEventListener('load', function () {
+    // 
     let txtList = document.querySelectorAll('#txtList');
     txtList.forEach(txtList => {
         txtList.style.cssText = `height: ${txtList.scrollHeight - 4}px; overflow-y: hidden`;
@@ -67,12 +182,11 @@ window.addEventListener('load', function () {
         })
     });
 });
-
 // ADD TODO LIST
 function addTodo(el) {
 
     if (inputTxt.value.trim() == "") {
-        eachList.textContent = "Todo Listnya di isi dulu bre";
+        eachList.textContent = "Silahkan isi Todo List terlebih dahulu";
     }
     else {
         // SAVE TO LOCAL STORAGE
@@ -102,8 +216,6 @@ function addTodo(el) {
         localStorage.setItem('saveList', JSON.stringify(arrayList));
         inputTxt.value = '';
         //
-        let listWrapper = document.querySelectorAll('.list-wrapper').length;
-        eachList.textContent = 'Anda memiliki ' + listWrapper + ' Todo List';
 
         let txtList = document.querySelectorAll('#txtList');
         txtList.forEach(txtList => {
@@ -122,16 +234,15 @@ function addTodo(el) {
                         localStorage.setItem('saveList', JSON.stringify(arrayList));
                     }
                 });
-
                 this.style.height = '30px';
-                this.style.height = `${this.scrollHeight}px`;
+                this.style.height = `${this.scrollHeight - 4}px`;
             })
         });
     }
+    for(let i = 1; i <= arrayList.length; i++) {
+        eachList.textContent = "Anda mempunyai "+ i +" Todo List";
+    }
 }
-// MENGHITUNG JUMLAH LIST WRAPPER SAAT WEB DI REFRESH
-let listWrapper = document.querySelectorAll('.list-wrapper').length;
-eachList.textContent = 'Anda memiliki ' + listWrapper + ' Todo List';
 
 // INPUT DATE
 let dateContainer = document.querySelector('.input-date');
@@ -162,6 +273,7 @@ function doneList(el) {
         arrayList[clickArrayDoneList].doneList = false;
     }
     localStorage.setItem('saveList', JSON.stringify(arrayList));
+    //
 };
 
 // DELETE LIST
@@ -173,9 +285,11 @@ function deleteList(el) {
     localStorage.setItem('saveList', JSON.stringify(arrayList)); // save list
     deleteListParent.remove(); // remove list
     // COUNTING LIST WRAPPER
-    eachList.textContent = "Anda memiliki " + (listWrapper.length - 1) + " Todo List";
-}
+    for(let i = 0; i <= arrayList.length; i++) {
+        eachList.textContent = "Anda mempunyai "+ i +" Todo List";
+    }
 
+}
 // DARK MODE
 function darkMode() {
     document.body.classList.toggle('darkModeAll');
